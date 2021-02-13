@@ -54,7 +54,7 @@ def server(redis_client):
     Wrapper for the update function, so it has a redis instance passed in.
     """
     async def update(websocket, path):
-        cleaned_path = path.split('?')[0].split('/')[1]
+        cleaned_path = path.split('?')[0].split('/')[-1]
         if cleaned_path not in config.PATH:
             logger.warning("Request for unknown path: %s Expected: %s", cleaned_path, config.PATH)
             return

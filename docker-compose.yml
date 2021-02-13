@@ -1,10 +1,26 @@
-version: "3.9"  # optional since v1.27.0
+version: "3"
 services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
   backend:
     build: ./backend
-    ports:
-      - "8080:8080"
-    links:
+    depends_on:
       - redis
+    environment:
+      - PORT=8080
+      - REDIS_HOST=redis
+  
+#  collector:
+#    build: ./collector
+#    links:
+#      - redis
+#    environment:
+#      - HZ=30
+
   redis:
     image: redis
