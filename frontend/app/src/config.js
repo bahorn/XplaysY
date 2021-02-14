@@ -1,5 +1,5 @@
 let Config = {
-  name: 'shared controller!'
+  name: 'X plays Y'
 }
 
 export default Config;
